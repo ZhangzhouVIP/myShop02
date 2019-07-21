@@ -1,0 +1,52 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/category/category",
+    "pages/search/search",
+    "pages/result/result",
+    "pages/cart/cart",
+    "pages/detail/detail",
+    "pages/mine/mine"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FF8C00",
+    "enablePullDownRefresh": false,
+    "navigationBarTitleText": "农家小铺",
+    "navigationBarTextStyle": "white",
+    "backgroundColorBottom": "#ffffff"
+  },
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#d81e06",
+    "backgroundColor": "#FF8C00",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "image/index-icon/home.png",
+        "selectedIconPath": "image/index-icon/home-active.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "image/index-icon/class.png",
+        "selectedIconPath": "image/index-icon/class-active.png"
+      },
+      {
+        "pagePath": "pages/cart/cart",
+        "text": "购物车",
+        "iconPath": "image/index-icon/cart.png",
+        "selectedIconPath": "image/index-icon/cart-active.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "image/index-icon/mine.png",
+        "selectedIconPath": "image/index-icon/mine-active.png"
+      }
+    ]
+  }
+}

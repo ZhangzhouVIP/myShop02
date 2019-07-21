@@ -1,0 +1,13 @@
+<view class='content'>
+  <view class='top'>
+    <view class='search'>
+      <input bindinput="bindKeyInput" placeholder="请输入关键字！" bindconfirm="goResult" focus='true'/>
+    </view>
+    <view class='bt' bindtap='goResult'>
+      <text>搜索</text>
+    </view>
+  </view>
+  <scroll-view class='bottom' scroll-y>
+  
+  </scroll-view>
+</view>

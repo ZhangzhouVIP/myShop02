@@ -1,0 +1,53 @@
+<view class='content'>
+
+    <view class='top'>
+        <view class='search' bindtap='goSearch'>
+            <icon class="search-icon" type="search" size="18"></icon>
+            <text class='serar-text'>商品搜索</text>
+        </view>
+    </view>
+
+    <view class='bottom'>
+
+        <view class='left'>
+            <scroll-view class='sp' scroll-y>
+
+                <block wx:for="{{types}}" wx:key="{{item.id.value}}">
+
+                    <view class="type {{cur == index ? 'selectColor' : ''}}" bindtap='getCur' 
+                        data-selectindex='{{index}}' data-classid='{{item.id.value}}'>
+                        <text>{{item.name.value}}</text>
+                    </view>
+                    
+                </block>
+
+            </scroll-view>
+        </view>
+
+        <view class='right'>
+
+            <scroll-view class='sp' scroll-y>
+
+                <view class='tian-row'>
+
+                    <block wx:for="{{typeTrees}}" wx:key="{{item.id.value}}">
+
+                        <view class='tian-item' data-productid="{{item.id.value}}" bindtap='goDetail'>
+                            <view class='img'>
+                                <image src='{{item.listpicture.value}}'></image>
+                            </view>
+                            <view class='fName'>
+                                <text>{{item.name.value}}</text>
+                            </view>
+                        </view>
+
+                    </block>
+
+                </view>
+
+            </scroll-view>
+            
+        </view>
+
+    </view>
+</view>

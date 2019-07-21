@@ -1,0 +1,92 @@
+<view class='content'>
+  <scroll-view class="productInfo" scroll-y>
+
+    <view class="top-middle">
+      <view class='top' wx:if="{{item[0].id.value==null}}">
+        <image src='../../image/list-img/heblin.jpg'></image>
+      </view>
+      <view class='top' wx:else>
+        <image src='{{item[0].listpicture.value}}'></image>
+      </view>
+
+      <view class='middle'>
+        <view class='middle-top'>
+          <view class="middle-top-left">
+            <text>{{item[0].describe.value}}</text>
+          </view>
+          <view class="middle-top-right">
+              
+          </view>
+        </view>
+
+        <view class="middle-middle">
+
+            <view class="product-price">
+
+                <view class="price-icon">
+                    <image src="../../image/detail-icon/price-icon.png" />
+                </view>
+
+                <view class="price-number">
+                  <text>{{item[0].price.value}}</text>
+                </view>
+
+                <view class="price-unit">
+                    <text>{{item[0].unit.value}}</text>
+                </view>
+
+            </view>
+
+          <view class="product-inventory">
+            <text>库存：{{item[0].inventory.value}} 箱</text>
+          </view>
+
+        </view>
+
+        <view class='middle-bottom'>
+            <text>运费：{{item[0].transcost.value}}</text>
+        </view>
+
+      </view>
+    </view>
+
+
+    <view class="other">
+      <image src='../../image/list-img/heblin.jpg'></image>
+      <image src='../../image/list-img/heblin.jpg'></image>
+      <image src='../../image/list-img/heblin.jpg'></image>
+      <image src='../../image/list-img/heblin.jpg'></image>
+    </view>
+
+  </scroll-view>
+
+
+  <view class='bottom'>
+    <view class='kefu'>
+      <view class='img'>
+        <image src='../../image/detail-icon/cusSev.png'></image>
+      </view>
+      <view class='kf'>
+        <text>客服</text>
+      </view>
+    </view>
+
+    <view class='shoucang'>
+      <view class='img'>
+        <image src='../../image/detail-icon/collec.png'></image>
+      </view>
+      <view class='kf'>
+        <text>收藏</text>
+      </view>
+    </view>
+
+    <view class='cart' bindtap='addCart'>
+      <text>加入购物车</text>
+    </view>
+
+    <view class='sell'>
+      <text>立即支付</text>
+    </view>
+
+  </view>
+</view>

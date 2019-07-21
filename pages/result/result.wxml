@@ -1,0 +1,34 @@
+<view class='content'>
+  <view class='top'>
+    <view class='search'>
+      <input bindinput="bindKeyInput" placeholder="请输入关键字！" bindconfirm="goResult" focus='true' />
+    </view>
+    <view class='bt' bindtap='goResult'>
+      <text>搜索</text>
+    </view>
+  </view>
+  <view class='bottom'>
+    <view class='right'>
+      <scroll-view class='sp' scroll-y>
+
+        <view class='tian-row' wx:if="{{typeTrees.length!=0}}">
+          <block wx:for="{{typeTrees}}" wx:key="{{item.id.value}}">
+            <view class='tian-item' data-selectindex='{{index}}' data-fid='{{item.type.value}}' data-productid="{{item.id.value}}" bindtap='goDetail'>
+              <view class='img'>
+                <image src='{{item.listpicture.value}}'></image>
+              </view>
+              <view class='fName'>
+                <text>{{item.name.value}}</text>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="view-nothing" wx:else>
+          <image class="image-nothing" src="../../image/detail-icon/nothing.png" />
+          <text class="text-nothing">查无商品</text>
+        </view>
+
+      </scroll-view>
+    </view>
+  </view>
+</view>

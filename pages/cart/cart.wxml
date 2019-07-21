@@ -1,0 +1,66 @@
+<view class='content'>
+
+    <scroll-view class='cart-list' scroll-y>
+        <block wx:for="{{selectItems}}" wx:key="{{selectItems[index].productID}}">
+            <view class='item'>
+                <view class='select'>
+                    <icon wx:if="{{selectItems[index].productSelect}}" type='success_circle' size='30' data-index='{{index}}' bindtap='selectItem'></icon>
+                    <icon wx:else type='circle' size='30' data-index='{{index}}' bindtap='selectItem'></icon>
+                </view>
+                <view class='img'>
+                    <image src='{{selectItems[index].pListPicture}}'></image>
+                </view>
+                <view class='shuoming'>
+                    <view class='fName'>
+                        <text>{{selectItems[index].productName}}</text>
+                    </view>
+                    <view class='fPrice'>
+                        <text>{{selectItems[index].productPrice}}</text>
+                    </view>
+                </view>
+                <view class='caozuo'>
+                    <view class='del' data-index='{{index}}' bindtap='remove'>
+                        <text>删除</text>
+                    </view>
+                    <view class='shuliang'>
+                        <view class='jian' bindtap='jian' data-index='{{index}}'>
+                            <text>-</text>
+                        </view>
+                        <view class='shuzi'>
+                            <input type='number' value='{{selectItems[index].productNum}}'></input>
+                        </view>
+                        <view class='jia' bindtap='jia' data-index='{{index}}'>
+                            <text>+</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </scroll-view>
+
+
+    <view class='cart-foot'>
+        <view class='left'>
+            <view class='guiding'>
+                <view class='select'>
+                    <icon wx:if="{{selectAll}}" type='success_circle' size='30' bindtap='selectAll'></icon>
+                    <icon wx:else type='circle' size='30' bindtap='selectAll'></icon>
+                </view>
+                <view class='quanxuan'>
+                    <text>全选</text>
+                </view>
+                <view class='rmb'>
+                    <text>￥</text>
+                </view>
+            </view>
+            <view class='zongjia'>
+                <text>{{total}}</text>
+            </view>
+        </view>
+        <view class='right'>
+            <view class='zf'>
+                <text>立即支付</text>
+            </view>
+        </view>
+    </view>
+</view>
