@@ -6,7 +6,8 @@
     "pages/result/result",
     "pages/cart/cart",
     "pages/detail/detail",
-    "pages/mine/mine"
+    "pages/mine/mine",
+    "pages/mypay/mypay"
   ],
   "window": {
     "backgroundTextStyle": "light",

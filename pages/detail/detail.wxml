@@ -84,7 +84,7 @@
       <text>加入购物车</text>
     </view>
 
-    <view class='sell'>
+    <view class='sell' bindtap="pay">
       <text>立即支付</text>
     </view>
 

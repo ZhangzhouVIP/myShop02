@@ -1,20 +1,18 @@
 <view class="content">
-
-    <view class='top'>
-        <view class='search' bindtap='goSearch'>
-            <icon class="search-icon" type="search" size="18"></icon>
-            <text class='serar-text'>商品搜索</text>
-        </view>
+  <view class='top'>
+    <view class='search' bindtap='goSearch'>
+      <icon class="search-icon" type="search" size="18"></icon>
+      <text class='serar-text'>商品搜索</text>
     </view>
-
+  </view>
   <!-- 商品轮播图 -->
   <view class="swiper-container">
     <swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" class='sp' circular='true'>
       <block wx:for="{{items}}" wx:key="{{item.id.value}}">
         <block wx:if="{{item.isswiper.value == 1}}">
-        <swiper-item>
-          <image src="{{item.swiperpicture.value}}" data-id='{{item.id.value}}' class="slide-image" bindtap='goDetail' />
-        </swiper-item>
+          <swiper-item>
+            <image src="{{item.swiperpicture.value}}" data-id='{{item.id.value}}' class="slide-image" bindtap='goDetail' />
+          </swiper-item>
         </block>
       </block>
     </swiper>
@@ -38,15 +36,8 @@
           </view>
         </view>
         <view class='item-right'>
-          <view class="item-right-top">
-            <view class="paybuy" bindtap="" data-index="{{index}}">
-              <text>下单购买</text>
-            </view>
-          </view>
-          <view class="item-right-bottom">
-            <view class="addcart" bindtap="addcart" data-index="{{index}}">
-              <text>加入购物车</text>
-            </view>
+          <view class="addcart" bindtap="addcart" data-index="{{index}}">
+            <text>加入购物车</text>
           </view>
         </view>
       </view>

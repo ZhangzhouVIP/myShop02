@@ -58,7 +58,7 @@
             </view>
         </view>
         <view class='right'>
-            <view class='zf'>
+            <view class='zf' bindtap="pay">
                 <text>立即支付</text>
             </view>
         </view>

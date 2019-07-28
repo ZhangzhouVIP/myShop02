@@ -1,0 +1,64 @@
+<view class="contain">
+  <view class='bt'>
+    <text>乐学小店支付凭据</text>
+  </view>
+  <view class='orderId'>
+    <text>单号：{{orderId}}</text>
+  </view>
+  <view class='date'>
+    <text>日期：{{time}}</text>
+  </view>
+  <view class='xx'></view>
+  <view class='xx'></view>
+
+  <view class='goodsSum'>
+    <view class='item'>
+      <view class='goodsSum-left'>
+        <text>商品名称</text>
+      </view>
+      <view class='goodsSum-mid'>
+        <text>商品数量</text>
+      </view>
+      <view class='goodsSum-right'>
+        <text>商品单价</text>
+      </view>
+    </view>
+    <scroll-view class='list-view1' scroll-y>
+      <block wx:for="{{selectItems}}" wx:key="{{item.productID}}">
+        <view class='goods'>
+          <view class='goodSum-left'>
+            <text>{{item.productName}}</text>
+          </view>
+          <view class='goodSum-mid'>
+            <text>*{{item.productNum}}</text>
+          </view>
+          <view class='goodSum-right'>
+            <text>¥{{item.productPrice}}</text>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+
+  </view>
+</view>
+<view class='moneySum'>
+  <view class='moneySum-left'>
+    <text>付款金额：</text>
+  </view>
+  <view class='moneySum-right'>
+    <text>¥{{total}}</text>
+  </view>
+</view>
+<view class='xx'></view>
+<view class='xx'></view>
+<view class='jw'>
+  <view class='telphone'>
+    <text>客服电话：0586-7854-63</text>
+  </view>
+  <view class='telphone'>
+    <text>此支付凭据可当做发票，退换货凭证</text>
+  </view>
+  <view class='telphone'>
+    <text>谢谢惠顾</text>
+  </view>
+</view>

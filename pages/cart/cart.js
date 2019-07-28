@@ -1,4 +1,6 @@
 // pages/cart/cart.js
+var util = require('../../utils/util.js');
+const app = getApp();
 Page({
 
   /**
@@ -16,21 +18,21 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
 
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
+  onReady: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function() {
 
     if (wx.getStorageSync("newItem") != 'isNull') {
 
@@ -59,7 +61,7 @@ Page({
 
     /* */
     let cartProNum = String(wx.getStorageSync("cartProNum"));
-    if(null != cartProNum && '' != cartProNum && '0' != cartProNum) {
+    if (null != cartProNum && '' != cartProNum && '0' != cartProNum) {
       wx.setTabBarBadge({
         index: 2,
         text: cartProNum,
@@ -71,39 +73,39 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
+  onHide: function() {
 
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
 
   },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
 
   },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onReachBottom: function() {
 
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
+  onShareAppMessage: function() {
 
   },
   // 单选某个商品
-  selectItem: function (e) {
+  selectItem: function(e) {
 
     let i = e.currentTarget.dataset.index;
     this.data.selectItems[i].productSelect = !this.data.selectItems[i].productSelect;
@@ -130,7 +132,7 @@ Page({
 
   },
   // 点击全选按钮（）
-  selectAll: function () {
+  selectAll: function() {
     this.data.selectAll = !this.data.selectAll;
     for (let i = 0; i < this.data.selectItems.length; i++) {
       this.data.selectItems[i].productSelect = this.data.selectAll;
@@ -145,7 +147,7 @@ Page({
   },
 
   // 减法
-  jian: function (e) {
+  jian: function(e) {
     let i = e.currentTarget.dataset.index;
     if (this.data.selectItems[i].productNum >= 2) {
       this.data.selectItems[i].productNum = this.data.selectItems[i].productNum - 1;
@@ -159,7 +161,7 @@ Page({
   },
 
   // 加法
-  jia: function (e) {
+  jia: function(e) {
     let i = e.currentTarget.dataset.index;
     this.data.selectItems[i].productNum = this.data.selectItems[i].productNum + 1;
     // 渲染,局部渲染
@@ -170,7 +172,7 @@ Page({
     this.sum();
   },
   // 删除购物车中某个商品
-  remove: function (e) {
+  remove: function(e) {
     let i = e.currentTarget.dataset.index;
     this.data.selectItems.splice(i, 1);
     // 渲染
@@ -179,19 +181,21 @@ Page({
     });
     //计算总价
     this.sum();
-    
+
     let cartProNum = wx.getStorageSync("cartProNum") - 1;
     wx.setTabBarBadge({
       index: 2,
       text: String(cartProNum),
     });
     wx.setStorageSync("cartProNum", wx.getStorageSync("cartProNum") - 1);
-    if(0 == cartProNum) {
-      wx.removeTabBarBadge({ index: 2 });
+    if (0 == cartProNum) {
+      wx.removeTabBarBadge({
+        index: 2
+      });
     }
   },
   // 计算总价
-  sum: function () {
+  sum: function() {
     let temp = 0;
     for (let i = 0; i < this.data.selectItems.length; i++) {
       if (this.data.selectItems[i].productSelect) {
@@ -203,6 +207,32 @@ Page({
       total: temp.toFixed(2)
     });
 
+  },
+
+  pay: function() {
+
+    
+    /*清空小票缓存 */
+    wx.removeStorageSync("selectItems");
+    wx.removeStorageSync("total");
+    wx.removeStorageSync("time");
+
+    wx.setStorageSync("selectItems", this.data.selectItems);
+    wx.setStorageSync("total", this.data.total);
+    wx.setStorageSync("time", util.formatTime(new Date()));
+
+    /* 金额单位是分，真坑 */
+    let that = this;
+    console.log("selectItems = " + this.data.selectItems);
+    app.createProductOrderByServerOpenId(
+      app.server.createOrderUrl,
+      app.server.openId,
+      that.data.total * 100,
+      "购物车");
+
+      /*
+      如何在支付成功后从购物车中将支付成功的物品删除？？？ 
+      */
   }
 
 })
