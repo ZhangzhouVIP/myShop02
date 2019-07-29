@@ -120,25 +120,37 @@ App({
       //   'Content-Type': 'application/x-www-form-urlencoded'
       // }, // 设置请求的 header
       success: function (res) {
+
         if (res.data.status == 1) {
           wx.requestPayment({
-            timeStamp: order.timeStamp,
-            nonceStr: order.nonceStr,
-            package: order.package,
-            signType: 'MD5',
-            paySign: order.paySign,
+
+            timeStamp   : order.timeStamp,
+            nonceStr    : order.nonceStr,
+            package     : order.package,
+            signType    : 'MD5',
+            paySign     : order.paySign,
 
             success: function (res) {
+
               wx.showToast({
-                title: "支付成功!",
-                duration: 2000,
+                title     : "支付成功!",
+                duration  : 2000,
               });
+              
+              // 当支付类型为购物车时，支付成功后清空购物车
+              var payType = wx.getStorageSync("payType");
+              console.log("payType = " + payType);
+              if(2 == payType) {
+                console.log("============================================");
+                wx.setStorageSync("newItem", "isNull");
+              }
+              
+              // 支付成功后的购物小票
               setTimeout(function () {
                 wx.navigateTo({
-                  url: that.server.PaySuccessCallUrl,
+                  url : that.server.PaySuccessCallUrl,
                 });
               }, 2500);
-
               
             },
 

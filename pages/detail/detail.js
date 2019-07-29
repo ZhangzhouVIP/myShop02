@@ -109,10 +109,12 @@ Page({
     wx.removeStorageSync("selectItems");
     wx.removeStorageSync("total");
     wx.removeStorageSync("time");
+    wx.removeStorageSync("payType");
 
-    wx.setStorageSync("selectItems", {item});
-    wx.setStorageSync("total", this.data.item[0].price.value);
-    wx.setStorageSync("time", util.formatTime(new Date()));
+    wx.setStorageSync("selectItems",  {item});
+    wx.setStorageSync("total",        this.data.item[0].price.value);
+    wx.setStorageSync("time",         util.formatTime(new Date()));
+    wx.setStorageSync("payType",      1);/* 1-单品支付，2-购物车支付 */
   }
 
 })
